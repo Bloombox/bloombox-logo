@@ -1,0 +1,53 @@
+{
+  "name": "bloombox-logo",
+  "version": "0.0.1",
+  "description": "Encapsulates Bloombox's brand and logo as a web component",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bloombox/bloombox-logo.git"
+  },
+  "keywords": [
+    "polymer",
+    "web-components",
+    "bloombox"
+  ],
+  "author": "Sam Gammon <sam@momentum.io>",
+  "license": "Private, all rights reserved",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/bloombox/bloombox-logo/issues"
+  },
+  "homepage": "https://github.com/bloombox/bloombox-logo",
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "browser-sync": "^1.3.0",
+    "del": "^0.1.2",
+    "gulp": "^3.8.5",
+    "gulp-cache": "^0.2.2",
+    "gulp-changed": "^1.0.0",
+    "gulp-crisper": "0.0.4",
+    "gulp-flatten": "^0.0.2",
+    "gulp-if": "^1.2.1",
+    "gulp-imagemin": "^1.0.0",
+    "gulp-inline-source": "^2.1.0",
+    "gulp-jshint": "^1.6.3",
+    "gulp-load-plugins": "^0.5.3",
+    "gulp-plumber": "^1.0.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.4.0",
+    "gulp-size": "^1.0.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-uncss": "^0.4.5",
+    "gulp-useref": "^0.6.0",
+    "gulp-util": "^3.0.4",
+    "gulp-vulcanize": "^6.0.0",
+    "hydrolysis": "^1.18.2",
+    "lodash": "^3.6.0",
+    "marked": "^0.3.3",
+    "require-dir": "^0.1.0",
+    "superstatic": "^2.0.2",
+    "web-component-tester": "^2.2.3",
+    "run-sequence": "^0.3.6"
+  }
+}

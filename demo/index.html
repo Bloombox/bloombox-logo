@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>bloombox-logo demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../bloombox-logo.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../bloombox-styles/bloombox-styles.html">
+
+  <style is="custom-style" include="demo-pages-shared-styles">
+    .centered-demo {
+      --demo-snippet-demo: {
+        background-color: #4c9d2f;
+      };
+    }
+  </style>
+</head>
+<body unresolved>
+  <div class="vertical-section-container centered">
+    <h3>Basic logo example (with text)</h3>
+    <demo-snippet class="centered-demo">
+      <template>
+        <bloombox-logo mode="text"></bloombox-logo>
+      </template>
+    </demo-snippet>
+  </div>
+
+  <div class="vertical-section-container centered">
+    <h3>Basic logo example (without text)</h3>
+    <demo-snippet class="centered-demo">
+      <template>
+        <bloombox-logo mode="icon"></bloombox-logo>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+</html>

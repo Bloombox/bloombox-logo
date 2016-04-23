@@ -1,0 +1,87 @@
+<!--
+`<bloombox-logo>` provides branding and logo elements for Bloombox's look and feel.
+
+@group Bloombox Elements
+@element bloombox-logo
+@demo demo/index.html
+@homepage bloombox.github.io
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="bloombox-logo">
+  <style is="custom-style">
+    :host {
+      overflow: hidden;
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      background-color: #4c9d2f;
+    }
+
+    .bb-logo-box {
+      width: 100%;
+      height: 100%;
+    }
+
+    .bb-logo {
+      width: 100%;
+      height: 100%;
+    }
+
+    .bb-logo img {
+      width: 100%;
+    }
+  </style>
+
+  <template>
+    <div class="bb-logo-box">
+      <div class="bb-logo">
+        <template is="dom-if" if="[[ready]]">
+          <img src="[[src]]" alt="Bloombox">
+        </template>
+      </div><!-- end div.bb-logo -->
+    </div><!-- end div.bb-logo-box -->
+  </template>
+
+  <script>
+    Polymer.BloomboxLogo = Polymer({
+      is: 'bloombox-logo',
+      properties: {
+        ready: {
+          type: Boolean,
+          notify: true,
+          reflectToAttribute: false,
+          value: false
+        },
+
+        src: {
+          type: String,
+          notify: true,
+          reflectToAttribute: true
+        },
+
+        base: {
+          type: String,
+          notify: true,
+          reflectToAttribute: false,
+          value: "//storage.googleapis.com/bloombox-logo/v1/"
+        },
+
+        mode: {
+          type: String,
+          notify: true,
+          reflectToAttribute: true,
+          value: "text"
+        }
+      },
+
+      attached: function() {
+        var file = this.get("mode") == "icon" ? "logo-bloombox-v2-pms-icon.png" : "logo-bloombox-v2-pms-icon-text.png",
+            endpoint = this.get("base") + file;
+        
+        this.set("src", endpoint);
+        this.set("ready", true);
+      }
+    });
+  </script>
+</dom-module>
