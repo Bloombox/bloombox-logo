@@ -25,7 +25,6 @@
     "polymer": "Polymer/polymer#^1.0.0"
   },
   "devDependencies": {
-    "bloombox-styles": "bloombox/bloombox-styles#master",
     "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
