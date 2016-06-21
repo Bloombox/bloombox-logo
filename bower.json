@@ -16,13 +16,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/bloombox/bloombox-logo.git"
+    "url": "ssh://git@github.com:bloombox/bloombox-logo.git"
   },
   "license": "Private, All Rights Reserved",
   "homepage": "https://github.com/bloombox/bloombox-logo",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.5.0"
+    "polymer": "Polymer/polymer#^1.5.0",
+    "bloombox-styles": "git@github.com:bloombox/bloombox-styles.git#master"
   },
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
