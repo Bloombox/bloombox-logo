@@ -1,11 +1,11 @@
 {
   "name": "bloombox-logo",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Encapsulates Bloombox's brand and logo as a web component",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bloombox/bloombox-logo.git"
+    "url": "git@github.com:bloombox/bloombox-logo.git"
   },
   "keywords": [
     "polymer",

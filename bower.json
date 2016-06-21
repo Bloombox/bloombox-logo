@@ -1,6 +1,6 @@
 {
   "name": "bloombox-logo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Encapsulates Bloombox's brand and logo as a web component",
   "private": true,
   "authors": [
