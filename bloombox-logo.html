@@ -1,86 +1,114 @@
+
 <!--
 `<bloombox-logo>` provides branding and logo elements for Bloombox's look and feel.
+
+This element has multiple display modes, accessible through the `mode` property. Available modes have an example each in the "Demo" section, and are listed below in the `mode` property documentation.
+
+The property `mode` may optionally be combined with `logotext` to produce a horizontal logo, for use in web dashboards etc.
 
 @group Bloombox Elements
 @element bloombox-logo
 @demo demo/index.html
 @homepage bloombox.github.io
 -->
+
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-label/iron-label.html">
+<link rel="import" href="../bloombox-styles/bloombox-styles.html">
 
 <dom-module id="bloombox-logo">
-  <style is="custom-style">
+  <style is="custom-style" include="bloombox-styles">
     :host {
       overflow: hidden;
-      width: 200px;
-      height: 200px;
       padding: 10px;
-      background-color: #4c9d2f;
+      background-color: var(--bloombox-green-primary, #4c9d2f);
     }
 
-    .bb-logo-box {
+    :host .bb-logo-box {
       width: 100%;
       height: 100%;
     }
 
-    .bb-logo {
-      width: 100%;
-      height: 100%;
+    :host .bb-logo {
+      display: inline-block;
+      float: left;
+      background: red;
     }
 
-    .bb-logo img {
-      width: 100%;
+    :host .bb-logo img {
+      max-width: 100%; 
+    }
+
+    :host iron-label {
+      display: inline-block;
+      background: blue;
+
     }
   </style>
 
   <template>
     <div class="bb-logo-box">
       <div class="bb-logo">
-        <template is="dom-if" if="[[ready]]">
-          <img src="[[src]]" alt="Bloombox">
-        </template>
+        <img src="[[_src]]" alt="Bloombox" />
+        <iron-label hidden$="[[!logotext]]" class="bb-logotext">
+          <span>Bloombox</span>
+        </iron-label><!-- end iron-label.bb-logotext -->
       </div><!-- end div.bb-logo -->
     </div><!-- end div.bb-logo-box -->
   </template>
 
   <script>
+    var BloomboxLogoConfig = {
+      base: "//storage.googleapis.com/bloombox-logo/v1/"
+    };
+
     Polymer.BloomboxLogo = Polymer({
       is: 'bloombox-logo',
       properties: {
-        ready: {
-          type: Boolean,
-          notify: true,
-          reflectToAttribute: false,
-          value: false
-        },
-
-        src: {
+        /**
+         * Computes and provides the eventual `src` value for the logo image to be embedded, after 
+         * considering `mode` and `logotext`.
+         */
+        _src: {
           type: String,
           notify: true,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          computed: '_computeImageSrc(mode)'
         },
 
-        base: {
-          type: String,
-          notify: true,
-          reflectToAttribute: false,
-          value: "//storage.googleapis.com/bloombox-logo/v1/"
-        },
-
+        /**
+         * Display mode. Available values are `text` and `icon`:
+         * - `text`: Display a logo image with text embedded, like on the back of Bloombox devices.
+         * - `icon`: Display just the icon. This is best used with `logotext='true'` for a horizontal logo.
+         */
         mode: {
           type: String,
           notify: true,
           reflectToAttribute: true,
           value: "text"
+        },
+
+        /**
+         * Option to display text alongside selected logo. Use with `mode='icon'` to display horizontal logo
+         * for dashboard header, etc.
+         */
+        logotext: {
+          type: Boolean,
+          notify: true,
+          reflectToAttribute: true,
+          value: false
         }
       },
 
-      attached: function() {
-        var file = this.get("mode") == "icon" ? "logo-bloombox-v2-pms-icon.png" : "logo-bloombox-v2-pms-icon-text.png",
-            endpoint = this.get("base") + file;
-        
-        this.set("src", endpoint);
-        this.set("ready", true);
+      /**
+       * Computes the `src` value for the `<img>` tag powering the logo. This function backs the `_src`
+       * property and takes one parameter, `mode`, which is a `String` where the value is one of the
+       * available `mode`s for this component.
+       */
+      _computeImageSrc: function(mode) {
+        var file = mode == "icon" ? "logo-bloombox-v2-pms-icon.png" : "logo-bloombox-v2-pms-icon-text.png",
+            endpoint = BloomboxLogoConfig.base + file;
+        return endpoint;
       }
     });
   </script>
