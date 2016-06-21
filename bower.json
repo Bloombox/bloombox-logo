@@ -23,7 +23,8 @@
   "ignore": [],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.5.0",
-    "bloombox-styles": "git@github.com:bloombox/bloombox-styles.git#master"
+    "bloombox-styles": "git@github.com:bloombox/bloombox-styles.git#master",
+    "iron-label": "PolymerElements/iron-label#^1.0.2"
   },
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
