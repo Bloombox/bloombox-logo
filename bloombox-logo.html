@@ -16,66 +16,60 @@ The property `mode` may optionally be combined with `logotext` to produce a hori
 <link rel="import" href="../iron-label/iron-label.html">
 <link rel="import" href="../bloombox-styles/bloombox-styles.html">
 
+
 <dom-module id="bloombox-logo">
-  <style is="custom-style" include="bloombox-styles">
-    :host {
-      overflow: hidden;
-      display: block;
-      font-size: 35pt;
-    }
+  <template strip-whitespace>
+    <style is="custom-style" include="bloombox-styles">
+      :host {
+        overflow: hidden;
+        display: block;
+        font-size: 35pt;
+      }
 
-    :host .bb-logo-box {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      position: relative;
-    }
+      :host .bb-logo-box {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
 
-    :host .bb-logo img {
-      max-width: 100%;
-      min-width: 40px;
-      min-height: 40px;
-    }
+      :host .bb-logo img {
+        max-width: 100%;
+        min-width: 40px;
+        min-height: 40px;
+      }
 
-    :host .bb-logo-box.logotext .bb-logo {
-      max-width: 30%;
-    }
+      :host .bb-logo-box.logotext .bb-logo {
+        max-width: 30%;
+      }
 
-    :host .bb-logo-box.logotext .bb-logotext {
-      position: relative;
-      bottom: 0;
-      margin-left: 5%;
-      margin-top: -1%;
-      @apply(--layout-self-center);
-    }
+      :host .bb-logo-box.logotext .bb-logotext {
+        position: relative;
+        bottom: 0;
+        @apply(--layout-self-center);
+        margin-left: 0.2em;
+        margin-top: -0.2em;
+      }
 
-    :host .bb-logo-box.logotext .bb-logotext iron-label {
-      position: relative;
-      text-transform: lowercase;
-      color: var(--bloombox-yellow-accent);
-      -webkit-font-smoothing: antialiased;
-    }
-  </style>
+      :host .bb-logo-box.logotext .bb-logotext iron-label {
+        position: relative;
+        text-transform: lowercase;
+        color: var(--bloombox-yellow-accent);
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
 
-  <template>
-    <template is="dom-if" if="[[logotext]]">
-      <div class="bb-logo-box logotext">
-        <div class="bb-logo">
-          <img src="[[_src]]" alt="Bloombox" />
-        </div><!-- end div.bb-logo -->
+    <div class$="[[_baseClass]]">
+      <div class="bb-logo">
+        <img src="[[_src]]" alt="Bloombox" />
+      </div><!-- end div.bb-logo -->
+      <template is="dom-if" if="[[logotext]]" strip-whitespace>
         <div class="bb-logotext">
           <iron-label hidden$="[[!logotext]]">Bloombox</iron-label><!-- end iron-label.bb-logotext -->
         </div><!-- end div.bb-logotext -->
-      </div><!-- end div.bb-logo-box.logotext -->
-    </template>
-    <template is="dom-if" if="[[!logotext]]">
-      <div class="bb-logo-box">
-        <div class="bb-logo">
-          <img src="[[_src]]" alt="Bloombox" />
-        </div><!-- end div.bb-logo -->
-      </div><!-- end div.bb-logo-box -->
-    </template>
+      </template>
+    </div><!-- end div.bb-logo-box -->
   </template>
 
   <script>
@@ -93,8 +87,18 @@ The property `mode` may optionally be combined with `logotext` to produce a hori
         _src: {
           type: String,
           notify: true,
-          reflectToAttribute: true,
+          reflectToAttribute: false,
           computed: '_computeImageSrc(mode)'
+        },
+
+        /**
+         * Compute this widget's root class, given the current widget `mode`. See `mode` property
+         * documentation for accepted values.
+         */
+        _baseClass: {
+          type: String,
+          notify: true,
+          computed: '_computeBaseClass(mode, logotext)'
         },
 
         /**
@@ -130,6 +134,17 @@ The property `mode` may optionally be combined with `logotext` to produce a hori
         var file = mode == "icon" ? "logo-bloombox-v2-pms-icon.png" : "logo-bloombox-v2-pms-icon-text.png",
             endpoint = BloomboxLogoConfig.base + file;
         return endpoint;
+      },
+
+      /**
+       * Computes the `_baseClass` value for this widget, which changes the widget layout based on the
+       * current widget `mode`.
+       */
+      _computeBaseClass: function(mode, logotext) {
+        if (mode === "text" || logotext === true) {
+          return "bb-logo-box logotext";
+        }
+        return "bb-logo-box";
       }
     });
   </script>
