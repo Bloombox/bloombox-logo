@@ -1,6 +1,6 @@
 {
   "name": "bloombox-logo",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "description": "Encapsulates Bloombox's brand and logo as a web component",
   "private": true,
   "authors": [
@@ -22,8 +22,8 @@
   "homepage": "https://github.com/bloombox/bloombox-logo",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.5.0",
-    "bloombox-styles": "git@github.com:bloombox/bloombox-styles.git#master",
+    "polymer": "Polymer/polymer#^1.7.0",
+    "bloombox-styles": "Bloombox/bloombox-styles",
     "iron-label": "PolymerElements/iron-label#^1.0.2"
   },
   "devDependencies": {
@@ -31,9 +31,6 @@
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
     "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
-    "paper-styles": "polymerelements/paper-styles#^1.0.0",
-    "test-fixture": "polymerelements/test-fixture#^1.0.0",
-    "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   }
 }

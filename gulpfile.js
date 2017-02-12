@@ -1,40 +1,31 @@
 'use strict';
 // jshint node: true
 
-var path = require('path');
+var path = require('path'),
+    gulp = require('gulp'),
+    gutil = require('gulp-util'),
+    $ = require('gulp-load-plugins')(),
+    del = require('del'),
+    runSequence = require('run-sequence'),
+    browserSync = require('browser-sync'),
+    wct = require('web-component-tester'),
+    wct_jenkins = require('wct-jenkins'),
+    reload = browserSync.reload;
 
-// Include Gulp & Tools We'll Use
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var $ = require('gulp-load-plugins')();
-var del = require('del');
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var superstatic = require('superstatic');
-var shell = require('gulp-shell');
+wct.gulp.init(gulp, ['default']);
 
-gulp.task('build', shell.task(['make']));
-
-gulp.task('quickbuild', shell.task(['make quickbuild']));
-
-gulp.task('serve', ['default'], function () {
+gulp.task('serve', function () {
   browserSync({
     notify: false,
     server: {
-      baseDir: ['target', 'bower_components', 'node_modules']
+      baseDir: ['target', 'components', 'node_modules']
     }
   });
 
-  gulp.watch(['demo/*.html'], reload);
-  gulp.watch(['*.html'], ['quickbuild', reload]);
+  gulp.watch(['*.html', 'demo/*.html'], ['default', reload]);
 });
 
-gulp.task('default', function (cb) {
-  runSequence(
-    'build',
-    cb);
-});
+gulp.task('default', $.shell.task(['make quickbuild']));
 
 
 try { require('web-component-tester').gulp.init(gulp); } catch (err) {}
