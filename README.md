@@ -1,5 +1,5 @@
 
-##&lt;bloombox-logo&gt;  [![Build Status](https://buildbot.hq.mm-corp.systems/jenkins/buildStatus/icon?job=Bloombox/elements/bloombox-logo)](https://buildbot.hq.mm-corp.systems/jenkins/job/Bloombox/elements/bloombox-logo)
+## &lt;bloombox-logo&gt;  [![Build Status](https://buildbot.hq.mm-corp.systems/jenkins/buildStatus/icon?job=Bloombox/elements/bloombox-logo)](https://buildbot.hq.mm-corp.systems/jenkins/job/Bloombox/elements/bloombox-logo)
 
 [![Code Climate](https://codeclimate.com/repos/589fb685b77d423a46000001/badges/1ff3f37981a3308324c9/gpa.svg)](https://codeclimate.com/repos/589fb685b77d423a46000001/feed) [![Issue Count](https://codeclimate.com/repos/589fb685b77d423a46000001/badges/1ff3f37981a3308324c9/issue_count.svg)](https://codeclimate.com/repos/589fb685b77d423a46000001/feed)
 
